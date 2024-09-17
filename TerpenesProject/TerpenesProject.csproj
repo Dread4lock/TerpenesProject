@@ -19,10 +19,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Aroma\" />
-    <Folder Include="Views\Condition\" />
-    <Folder Include="Views\Terpene\" />
-  </ItemGroup>
-
 </Project>
