@@ -27,6 +27,9 @@ namespace TerpenesProject.Models
         // Отфильтрованные терпены, которые показываются в таблице
         public List<Terpene> FilteredTerpenes { get; set; }
 
+        // Связь с таблицей Aroma через many-to-many
+        public ICollection<Aroma> Aromas { get; set; }
+
 
     }
 }

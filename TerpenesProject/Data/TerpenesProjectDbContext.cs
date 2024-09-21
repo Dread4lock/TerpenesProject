@@ -28,5 +28,10 @@ public class TerpenesProjectDbContext : DbContext
             .HasOne(tc => tc.Condition)
             .WithMany(c => c.TerpeneConditions)
             .HasForeignKey(tc => tc.ConditionId);
+
+        modelBuilder.Entity<Terpene>()
+           .HasMany(t => t.Aromas)
+           .WithMany(a => a.Terpenes)
+           .UsingEntity(j => j.ToTable("TerpeneAromas")); // Настройка промежуточной таблицы
     }
 }
