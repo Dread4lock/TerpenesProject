@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TerpenesProject.Models
@@ -16,6 +18,15 @@ namespace TerpenesProject.Models
         [Required]
         public string Aroma { get; set; }
 
+        // Связь с таблицей TerpeneCondition
         public ICollection<TerpeneCondition> TerpeneConditions { get; set; }
+
+        // Все терпены для чекбоксов
+        public List<Terpene> AllTerpenes { get; set; }
+
+        // Отфильтрованные терпены, которые показываются в таблице
+        public List<Terpene> FilteredTerpenes { get; set; }
+
+
     }
 }

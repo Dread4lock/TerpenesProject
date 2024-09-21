@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TerpenesProject.Models
 {
@@ -6,9 +7,9 @@ namespace TerpenesProject.Models
     public class TerpeneCondition
     {
         public Guid TerpeneId { get; set; }
-        public required Terpene Terpene { get; set; }
+        public Terpene Terpene { get; set; }
 
         public Guid ConditionId { get; set; }
-        public required Condition Condition { get; set; }
+        public Condition Condition { get; set; }
     }
 }

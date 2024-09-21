@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TerpenesProject.Models.Terpene
+
 @{
+    ViewData["Title"] = "Terpene";
+}
+
+<h2>Terpenes</h2>
+
+<form method="post" asp-action="Filter">
+    @foreach (var terpene in Model.AllTerpenes)
+    {
+        <div>
+            <input type="checkbox" name="selectedTerpenes" value="@terpene.Id" /> @terpene.Name
+        </div>
+    }
+
+    <button type="submit">Filter</button>
+</form>
+
+@if (Model.FilteredTerpenes != null && Model.FilteredTerpenes.Any())
+{
+    <h3>Selected Terpenes</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Aroma</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var terpene in Model.FilteredTerpenes)
+            {
+                <tr>
+                    <td>@terpene.Name</td>
+                    <td>@terpene.Aroma</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No terpenes selected.</p>
 }
