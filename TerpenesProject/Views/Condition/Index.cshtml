@@ -1,3 +1,44 @@
-﻿@{
+﻿@model TerpenesProject.Models.Condition
+@{
     ViewData["Title"] = "Condition";
+}
+
+<h2>Conditions</h2>
+
+<!-- Форма для фильтрации по состояниям -->
+<form method="post" asp-action="Filter">
+    @foreach (var condition in Model.AllConditions)
+    {
+        <div>
+            <input type="checkbox" name="selectedConditions" value="@condition.Id" /> @condition.Name
+        </div>
+    }
+
+    <button type="submit">Filter</button>
+</form>
+
+@if (Model.FilteredTerpenes != null && Model.FilteredTerpenes.Any())
+{
+    <h3>Terpenes Related to Selected Conditions</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Terpene Name</th>
+                <th>Aroma</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var terpene in Model.FilteredTerpenes)
+            {
+                <tr>
+                    <td>@terpene.Name</td>
+                    <td>@terpene.Aroma</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No related terpenes found.</p>
 }

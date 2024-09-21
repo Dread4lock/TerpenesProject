@@ -17,5 +17,14 @@ namespace TerpenesProject.Models
 
         // Связь с таблицей TerpeneCondition
         public ICollection<TerpeneCondition> TerpeneConditions { get; set; }
+
+        // Все состояния для чекбоксов
+        public List<Condition> AllConditions { get; set; }
+
+        // Отфильтрованные состояния, которые показываются в таблице
+        public List<Condition> FilteredConditions { get; set; }
+
+        // Отфильтрованные терпены, которые показываются в таблице
+        public List<Terpene> FilteredTerpenes { get; set; }
     }
 }

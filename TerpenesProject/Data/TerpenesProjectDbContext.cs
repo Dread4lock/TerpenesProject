@@ -15,7 +15,7 @@ public class TerpenesProjectDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Настройка промежуточной таблицы
+        // Настройка промежуточной таблицы для many-to-many связи
         modelBuilder.Entity<TerpeneCondition>()
             .HasKey(tc => new { tc.TerpeneId, tc.ConditionId }); // Композитный ключ
 
