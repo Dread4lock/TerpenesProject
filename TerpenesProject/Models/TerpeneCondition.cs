@@ -6,10 +6,10 @@ namespace TerpenesProject.Models
     [Table("TerpenesConditions")]
     public class TerpeneCondition
     {
-        public Guid TerpeneId { get; set; }
+        public int TerpeneId { get; set; }
         public Terpene Terpene { get; set; }
 
-        public Guid ConditionId { get; set; }
+        public int ConditionId { get; set; }
         public Condition Condition { get; set; }
     }
 }

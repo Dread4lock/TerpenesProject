@@ -18,7 +18,7 @@ namespace TerpenesProject.Controllers
         }
 
         // Метод для загрузки страницы с состояниями и связанными терпенами
-        public async Task<IActionResult> Index(List<Guid> selectedConditions = null)
+        public async Task<IActionResult> Index(List<int> selectedConditions = null)
         {
             var viewModel = new Condition();
 
@@ -42,7 +42,7 @@ namespace TerpenesProject.Controllers
 
         // Метод для обработки фильтрации (срабатывает на нажатие кнопки "Filter")
         [HttpPost]
-        public async Task<IActionResult> Filter(List<Guid> selectedConditions)
+        public async Task<IActionResult> Filter(List<int> selectedConditions)
         {
             // Перенаправляем запрос на метод Index с выбранными состояниями
             return RedirectToAction("Index", new { selectedConditions });

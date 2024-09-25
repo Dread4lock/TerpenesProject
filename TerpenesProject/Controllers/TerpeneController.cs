@@ -16,7 +16,7 @@ public class TerpeneController : Controller
     }
 
     // Метод для загрузки страницы с чекбоксами и таблицей
-    public async Task<IActionResult> Index(List<Guid> selectedTerpenes = null)
+    public async Task<IActionResult> Index(List<int> selectedTerpenes = null)
     {
         var viewModel = new Terpene();
 
@@ -36,7 +36,7 @@ public class TerpeneController : Controller
 
     // Метод для обработки фильтрации (срабатывает на нажатие кнопки "Filter")
     [HttpPost]
-    public async Task<IActionResult> Filter(List<Guid> selectedTerpenes)
+    public async Task<IActionResult> Filter(List<int> selectedTerpenes)
     {
         // Перенаправляем запрос на метод Index с выбранными терпинами
         return RedirectToAction("Index", new { selectedTerpenes });

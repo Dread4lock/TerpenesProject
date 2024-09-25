@@ -18,11 +18,11 @@ namespace TerpenesProject.Migrations
 
             modelBuilder.Entity("AromaTerpene", b =>
                 {
-                    b.Property<Guid>("AromasId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AromasId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("TerpenesId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("TerpenesId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AromasId", "TerpenesId");
 
@@ -33,11 +33,11 @@ namespace TerpenesProject.Migrations
 
             modelBuilder.Entity("ConditionCondition", b =>
                 {
-                    b.Property<Guid>("AllConditionsId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AllConditionsId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("FilteredConditionsId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("FilteredConditionsId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AllConditionsId", "FilteredConditionsId");
 
@@ -48,11 +48,11 @@ namespace TerpenesProject.Migrations
 
             modelBuilder.Entity("TerpeneTerpene", b =>
                 {
-                    b.Property<Guid>("AllTerpenesId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AllTerpenesId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("FilteredTerpenesId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("FilteredTerpenesId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AllTerpenesId", "FilteredTerpenesId");
 
@@ -63,9 +63,9 @@ namespace TerpenesProject.Migrations
 
             modelBuilder.Entity("TerpenesProject.Models.Aroma", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -78,9 +78,9 @@ namespace TerpenesProject.Migrations
 
             modelBuilder.Entity("TerpenesProject.Models.Condition", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -93,16 +93,16 @@ namespace TerpenesProject.Migrations
 
             modelBuilder.Entity("TerpenesProject.Models.Terpene", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Aroma")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ConditionId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("ConditionId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -117,11 +117,11 @@ namespace TerpenesProject.Migrations
 
             modelBuilder.Entity("TerpenesProject.Models.TerpeneCondition", b =>
                 {
-                    b.Property<Guid>("TerpeneId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("TerpeneId")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("ConditionId")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("ConditionId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("TerpeneId", "ConditionId");
 
