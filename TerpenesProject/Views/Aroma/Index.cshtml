@@ -8,13 +8,14 @@
 
 <!-- Форма для фильтрации по ароматам -->
 <form method="post" asp-action="Filter">
+    <div class="checkbox-grid">
     @foreach (var aroma in Model.AllAromas)
     {
         <div>
             <input type="checkbox" name="selectedAromas" value="@aroma" /> @aroma
         </div>
     }
-
+    </div>
     <button type="submit">Filter</button>
 </form>
 

@@ -7,12 +7,14 @@
 <h2>Terpenes</h2>
 
 <form method="post" asp-action="Filter">
+    <div class="checkbox-grid">
     @foreach (var terpene in Model.AllTerpenes)
     {
         <div>
             <input type="checkbox" name="selectedTerpenes" value="@terpene.Id" /> @terpene.Name
         </div>
     }
+    </div>
 
     <button type="submit">Filter</button>
 </form>

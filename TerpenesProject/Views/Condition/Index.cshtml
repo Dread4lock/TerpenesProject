@@ -7,13 +7,14 @@
 
 <!-- Форма для фильтрации по состояниям -->
 <form method="post" asp-action="Filter">
+    <div class="checkbox-grid">
     @foreach (var condition in Model.AllConditions)
     {
         <div>
             <input type="checkbox" name="selectedConditions" value="@condition.Id" /> @condition.Name
         </div>
     }
-
+    </div>
     <button type="submit">Filter</button>
 </form>
 
