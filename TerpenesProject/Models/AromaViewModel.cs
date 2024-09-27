@@ -10,5 +10,8 @@ namespace TerpenesProject.Models
 
         // Отфильтрованные терпены для отображения на странице
         public List<Terpene> FilteredTerpenes { get; set; }
+
+        // Список для связанных условий
+        public Dictionary<Terpene, List<Condition>> TerpeneConditions { get; set; } = new Dictionary<Terpene, List<Condition>>();
     }
 }

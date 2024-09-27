@@ -22,21 +22,28 @@ namespace TerpenesProject.Controllers
         {
             var viewModel = new AromaViewModel();
 
-            // Получаем терпены из базы данных и обрабатываем ароматы на стороне клиента
-            var allTerpenes = await _context.Terpenes.ToListAsync();
+            var allTerpenes = await _context.Terpenes
+                .Include(t => t.TerpeneConditions)
+                .ThenInclude(tc => tc.Condition)
+                .ToListAsync();
 
-            // Разделяем ароматы на индивидуальные элементы
             viewModel.AllAromas = allTerpenes
                 .SelectMany(t => t.Aroma.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries))
                 .Distinct()
                 .ToList();
 
-            // Если есть выбранные ароматы, отфильтровываем терпены по ним
             if (selectedAromas != null && selectedAromas.Any())
             {
                 viewModel.FilteredTerpenes = allTerpenes
                     .Where(t => selectedAromas.Any(a => t.Aroma.Contains(a)))
                     .ToList();
+
+                // Для каждого терпена добавляем связанные с ним условия
+                foreach (var terpene in viewModel.FilteredTerpenes)
+                {
+                    var conditions = terpene.TerpeneConditions.Select(tc => tc.Condition).ToList();
+                    viewModel.TerpeneConditions[terpene] = conditions;
+                }
             }
 
             return View(viewModel);

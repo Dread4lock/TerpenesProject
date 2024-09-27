@@ -6,15 +6,14 @@
 
 <h2>Aromas</h2>
 
-<!-- Форма для фильтрации по ароматам -->
 <form method="post" asp-action="Filter">
     <div class="checkbox-grid">
-    @foreach (var aroma in Model.AllAromas)
-    {
-        <div>
-            <input type="checkbox" name="selectedAromas" value="@aroma" /> @aroma
-        </div>
-    }
+        @foreach (var aroma in Model.AllAromas)
+        {
+            <div>
+                <input type="checkbox" name="selectedAromas" value="@aroma" /> @aroma
+            </div>
+        }
     </div>
     <button type="submit">Filter</button>
 </form>
@@ -27,6 +26,7 @@
             <tr>
                 <th>Name</th>
                 <th>Aroma</th>
+                <th>Conditions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +35,17 @@
                 <tr>
                     <td>@terpene.Name</td>
                     <td>@terpene.Aroma</td>
+                    <td>
+                        @if (Model.TerpeneConditions.ContainsKey(terpene))
+                        {
+                            <ul>
+                                @foreach (var condition in Model.TerpeneConditions[terpene])
+                                {
+                                    <li>@condition.Name</li>
+                                }
+                            </ul>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>
